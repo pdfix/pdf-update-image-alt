@@ -1,3 +1,9 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-env
-*.png
+.vscode
+
+build/
+dist/
+env/
+venv/
+.env/
