@@ -52,7 +52,7 @@ def renderPage(doc: PdfDoc, pageNum: int, bbox: PdfRect, zoom: float) -> bytearr
     return data
 
 
-def updateImageAlt(elem: PdsStructElement, doc: PdfDoc):
+def updateImageAlt(elem: PdsStructElement, doc: PdfDoc, overwrite: bool):
     img = "image_" + str(elem.GetObject().GetId()) + ".jpg"
 
     # get image bbox from attributes
@@ -90,12 +90,14 @@ def updateImageAlt(elem: PdsStructElement, doc: PdfDoc):
 
     response = alt_description(img)
 
-    print(response)
     alt = response[0]
+    org_alt = elem.GetAlt()
     elem.SetAlt(alt)
+    if overwrite or not elem.GetAlt():
+        elem.SetAlt(alt)
 
 
-def browse_figure_tags(parent: PdsStructElement, doc: PdfDoc):
+def browse_figure_tags(parent: PdsStructElement, doc: PdfDoc, overwrite: bool):
     count = parent.GetNumChildren()
     struct_tree = doc.GetStructTree()
     for i in range(0, count):
@@ -104,15 +106,19 @@ def browse_figure_tags(parent: PdsStructElement, doc: PdfDoc):
         childElem = struct_tree.GetStructElementFromObject(parent.GetChildObject(i))
         if childElem.GetType(True) == "Figure":
             # process figure element
-            updateImageAlt(childElem, doc)
+            updateImageAlt(childElem, doc, overwrite)
         else:
-            browse_figure_tags(childElem, doc)
+            browse_figure_tags(childElem, doc, overwrite)
 
     return None
 
 
 def alt_text(
-    input_path: str, output_path: str, license_name: str, license_key: str
+    input_path: str,
+    output_path: str,
+    license_name: str,
+    license_key: str,
+    overwrite: bool,
 ) -> None:
     """
     Run OCR using Tesseract.
@@ -127,8 +133,8 @@ def alt_text(
         Pdfix SDK license name.
     license_key : str
         Pdfix SDK license key.
-    lang : str, optional
-        Language identifier for OCR Tesseract. Default value: "eng".
+    overwrite : bool
+        Overwrite alternate text if already present.
     """
     pdfix = GetPdfix()
     if pdfix is None:
@@ -151,7 +157,7 @@ def alt_text(
 
     child_elem = struct_tree.GetStructElementFromObject(struct_tree.GetChildObject(0))
     try:
-        browse_figure_tags(child_elem, doc)
+        browse_figure_tags(child_elem, doc, overwrite)
     except Exception as e:
         raise e
 
