@@ -1,11 +1,11 @@
 {
-  "name": "Pipeline Alt Text",
-  "desc": "Pipeline running Alt Text action.",
+  "name": "Alt Text",
+  "desc": "Action running Alt Text.",
   "version": {
     "major": 1,
     "minor": 0
   },
-  "pipeline": [
+  "actions": [
     {
       "name": "Alt Text",
       "desc": "Generating alternate texts in tags of given PDF document.",
