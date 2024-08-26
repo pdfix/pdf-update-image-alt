@@ -5,10 +5,10 @@ from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoToken
 
 def alt_description(img_path: str):
     model = VisionEncoderDecoderModel.from_pretrained(
-        "nlpconnect/vit-gpt2-image-captioning"
+        "nlpconnect/vit-gpt2-image-captioning",
     )
     feature_extractor = ViTImageProcessor.from_pretrained(
-        "nlpconnect/vit-gpt2-image-captioning"
+        "nlpconnect/vit-gpt2-image-captioning",
     )
     tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
 
@@ -29,5 +29,4 @@ def alt_description(img_path: str):
     output_ids = model.generate(pixel_values, **gen_kwargs)
 
     preds = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-    preds = [pred.strip() for pred in preds]
-    return preds
+    return [pred.strip() for pred in preds]

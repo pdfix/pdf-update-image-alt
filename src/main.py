@@ -1,15 +1,21 @@
-import base64
-import requests
 import argparse
 import os
+import shutil
 import sys
+from pathlib import Path
 
 from process_pdf import alt_text
 
 
-def main():
+def get_config(out_dir: str) -> None:
+    tgt = os.path.join(Path(__file__).parent.absolute(), "../config.json")
+    dst = os.path.join(out_dir, "config.json")
+    shutil.copyfile(tgt, dst)
+
+
+def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Process a PDF or image file with Tesseract OCR"
+        description="Process a PDF or image file with Tesseract OCR",
     )
     parser.add_argument("-i", "--input", type=str, help="The input PDF file")
     parser.add_argument(
@@ -28,7 +34,17 @@ def main():
         default=False,
         help="Overwrite alternate text if already present in the tag",
     )
+    parser.add_argument(
+        "--config",
+        type=str,
+        help="Save config file to local directory from docker",
+    )
     args = parser.parse_args()
+
+    if args.config:
+        print("copy config.json: {}".format(args.config))
+        get_config(args.config)
+        sys.exit(0)
 
     if not args.input or not args.output:
         parser.error("The following arguments are required: -i/--input, -o/--output ")
