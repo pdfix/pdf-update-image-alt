@@ -1,5 +1,5 @@
 # Use the official Debian slim image as a base
-FROM python:3.12.5-slim-bullseye
+FROM debian:bookworm-slim
 
 # Install Tesseract OCR and necessary dependencies
 RUN apt-get update && \
