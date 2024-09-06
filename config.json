@@ -19,34 +19,34 @@
         {
           "args": [
             "--input",
-            "${Input PDF}",
+            "${INPUT_PDF}",
             "--output",
-            "${Output PDF}"
-          ],
-          "name": "Runs trial",
-          "desc": "Runs trial"
-        },
-        {
-          "args": [
-            "--input",
-            "${Input PDF}",
-            "--output",
-            "${Output PDF}",
+            "${OUTPUT_PDF}",
             "--name",
-            "${License Name}",
+            "${LICENSE_NAME}",
             "--key",
-            "${License Key}"
+            "${LICENSE_KEY}"
           ],
           "name": "Runs with license",
           "desc": "Runs with license"
         },
         {
           "args": [
+            "--input",
+            "${INPUT_PDF}",
+            "--output",
+            "${OUTPUT_PDF}"
+          ],
+          "name": "Runs trial",
+          "desc": "Runs trial"
+        },
+        {
+          "args": [
             "--build",
             "--input",
-            "${Input PDF}",
+            "${INPUT_PDF}",
             "--output",
-            "${Output PDF}"
+            "${OUTPUT_PDF}"
           ],
           "name": "Runs trial with forced build",
           "desc": "Runs trial with forced build"
@@ -55,57 +55,41 @@
           "args": [
             "--build",
             "--input",
-            "${Input PDF}",
+            "${INPUT_PDF}",
             "--output",
-            "${Output PDF}",
+            "${OUTPUT_PDF}",
             "--name",
-            "${License Name}",
+            "${LICENSE_NAME}",
             "--key",
-            "${License Key}"
+            "${LICENSE_KEY}"
           ],
           "name": "Runs with license and forced build",
           "desc": "Runs with license and forced build"
         }
       ],
-      "configuration": {
-        "args": [
-            "--input",
-            "${Input PDF}",
-            "--output",
-            "${Output PDF}",
-            "--name",
-            "${License Name}",
-            "--key",
-            "${License Key}"
-          ],
-          "name": "Runs with license",
-          "desc": "Runs with license"
-      },
       "args": [
         {
-          "name": "Input PDF",
+          "name": "INPUT_PDF",
           "desc": "Input PDF file",
           "flags": 2,
           "ext": "pdf",
-          "type": "file_path",
-          "value": "user-defined file path"
+          "value": ""
         },
         {
-          "name": "Output PDF",
+          "name": "OUTPUT_PDF",
           "desc": "Output PDF file.",
           "flags": 4,
           "ext": "pdf",
-          "type": "file_path_save",
-          "value": "user-defined file path"
+          "value": ""
         },
         {
-          "name": "License Name",
+          "name": "LICENSE_NAME",
           "desc": "License name.",
           "type": "string",
           "value": ""
         },
         {
-          "name": "License Key",
+          "name": "LICENSE_KEY",
           "desc": "License key.",
           "type": "string",
           "value": ""
