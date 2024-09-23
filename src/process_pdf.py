@@ -93,7 +93,6 @@ def update_image_alt(elem: PdsStructElement, doc: PdfDoc, overwrite: bool) -> No
     response = alt_description(img)
 
     alt = response[0]
-    org_alt = elem.GetAlt()
 
     if overwrite or not org_alt:
         elem.SetAlt(alt)
