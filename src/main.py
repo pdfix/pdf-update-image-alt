@@ -58,7 +58,7 @@ def main() -> None:
 
     pars_detect.add_argument(
         "--overwrite",
-        type=bool,
+        action="store_true",
         required=False,
         default=False,
         help="Overwrite alternate text if already present in the tag",
