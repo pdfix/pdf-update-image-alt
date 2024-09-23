@@ -23,6 +23,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # Copy the source code and requirements.txt into the container
 COPY src/ /usr/alt-desc/src/
 COPY requirements.txt /usr/alt-desc/
+COPY config.json /usr/alt-desc/
 COPY download_models.py /usr/alt-desc/
 
 RUN pip install --no-cache-dir -r requirements.txt 
