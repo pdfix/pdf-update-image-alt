@@ -29,4 +29,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 RUN venv/bin/python3 download_models.py
 
-ENTRYPOINT ["venv/bin/python3", "src/main.py"]
+ENTRYPOINT ["/usr/alt-desc/venv/bin/python3", "/usr/alt-desc/src/main.py"]
