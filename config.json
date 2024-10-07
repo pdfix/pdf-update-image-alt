@@ -1,8 +1,8 @@
 {
   "actions": [
     {
-      "name": "Alt Text Detection",
-      "desc": "Generating alternate texts in tags of given PDF document",
+      "name": "Alt Text with VisionAI",
+      "desc": "Generate image alt texts in PDF document",
       "version": {
         "major": 1,
         "minor": 0
@@ -11,8 +11,8 @@
       "category": "Tags",
       "configurations": [
         {
-          "name": "Vision AI - Detect figure alt texts in PDF",
-          "desc": "Generate alternate texts in tags in PDF document",
+          "name": "Alt Text with VisionAI",
+          "desc": "Generate image alt texts in PDF document",
           "program": "docker run --platform linux/amd64 -v ${working_directory}:/data -w /data --rm pdfix/alt-text-vision:latest --name \"${license_name}\" --key \"${license_key}\" detect --input \"${input_pdf}\" -o \"/data/${output_pdf}\""
         }
       ],
