@@ -1,97 +1,34 @@
 {
-  "name": "Alt Text",
-  "desc": "Action running Alt Text.",
-  "version": {
-    "major": 1,
-    "minor": 0
-  },
   "actions": [
     {
-      "name": "Alt Text",
-      "desc": "Generating alternate texts in tags of given PDF document.",
-      "path": "user-defined command folder",
-      "category": "Accessibility",
-      "program": "run.sh",
-      "stdout": "",
-      "stderr": "",
-      "returnCodes" : [0],
+      "name": "Alt Text Detection",
+      "desc": "Generating alternate texts in tags of given PDF document",
+      "version": {
+        "major": 1,
+        "minor": 0
+      },
+      "icon": "add_photo_alternate",
+      "category": "Tags",
       "configurations": [
         {
-          "args": [
-            "--input",
-            "${INPUT_PDF}",
-            "--output",
-            "${OUTPUT_PDF}",
-            "--name",
-            "${LICENSE_NAME}",
-            "--key",
-            "${LICENSE_KEY}"
-          ],
-          "name": "Runs with license",
-          "desc": "Runs with license"
-        },
-        {
-          "args": [
-            "--input",
-            "${INPUT_PDF}",
-            "--output",
-            "${OUTPUT_PDF}"
-          ],
-          "name": "Runs trial",
-          "desc": "Runs trial"
-        },
-        {
-          "args": [
-            "--build",
-            "--input",
-            "${INPUT_PDF}",
-            "--output",
-            "${OUTPUT_PDF}"
-          ],
-          "name": "Runs trial with forced build",
-          "desc": "Runs trial with forced build"
-        },
-        {
-          "args": [
-            "--build",
-            "--input",
-            "${INPUT_PDF}",
-            "--output",
-            "${OUTPUT_PDF}",
-            "--name",
-            "${LICENSE_NAME}",
-            "--key",
-            "${LICENSE_KEY}"
-          ],
-          "name": "Runs with license and forced build",
-          "desc": "Runs with license and forced build"
+          "name": "Vision AI - Detect figure alt texts in PDF",
+          "desc": "Generate alternate texts in tags in PDF document",
+          "program": "docker run --platform linux/amd64 -v ${working_directory}:/data -w /data --rm pdfix/alt-text-vision:latest --name \"${license_name}\" --key \"${license_key}\" run.sh --input \"${input_pdf}\" -o \"/data/${output_pdf}\""
         }
       ],
       "args": [
         {
-          "name": "INPUT_PDF",
+          "name": "input_pdf",
           "desc": "Input PDF file",
           "flags": 2,
           "ext": "pdf",
           "value": ""
         },
         {
-          "name": "OUTPUT_PDF",
+          "name": "output_pdf",
           "desc": "Output PDF file.",
           "flags": 4,
           "ext": "pdf",
-          "value": ""
-        },
-        {
-          "name": "LICENSE_NAME",
-          "desc": "License name.",
-          "type": "string",
-          "value": ""
-        },
-        {
-          "name": "LICENSE_KEY",
-          "desc": "License key.",
-          "type": "string",
           "value": ""
         }
       ]
