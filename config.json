@@ -1,8 +1,8 @@
 {
   "actions": [
     {
-      "name": "Alt Text with VisionAI",
-      "desc": "Generate image alt texts in PDF document",
+      "name": "Alt Text Generator",
+      "desc": "A Docker image that automatically generates and applies alternative image descriptions to PDF files.",
       "version": {
         "major": 1,
         "minor": 0
@@ -11,7 +11,7 @@
       "category": "Tags",
       "configurations": [
         {
-          "name": "Alt Text with VisionAI",
+          "name": "Alt Text Generator",
           "desc": "Generate image alt texts in PDF document",
           "program": "docker run --platform linux/amd64 -v ${working_directory}:/data -w /data --rm pdfix/alt-text-vision:latest --name \"${license_name}\" --key \"${license_key}\" detect --input \"${input_pdf}\" -o \"/data/${output_pdf}\""
         }
