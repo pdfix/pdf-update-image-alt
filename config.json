@@ -2,7 +2,7 @@
   "actions": [
     {
       "name": "Alt Text Generator",
-      "desc": "A Docker image that automatically generates and applies alternative image descriptions to PDF files.",
+      "desc": "A Docker image that automatically generates and applies alternative image descriptions to PDF files",
       "version": {
         "major": 1,
         "minor": 0
